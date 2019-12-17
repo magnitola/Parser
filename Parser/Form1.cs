@@ -29,14 +29,30 @@ namespace Parser
                 MessageBox.Show("Произошла ошибка в считывании!");
         }
 
+        //listBox1.Invoke((MethodInvoker)delegate { listBox1.Items.Add(str.Title); });
+        //Loader.GoLoad(textBox1.Text);
+
         private void Loader_NewData(IArticle str)
         {
-            listBox1.Invoke((MethodInvoker)delegate { listBox1.Items.Add(str.Title); });
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bunifuTextbox1_Enter(object sender, EventArgs e)
         {
-            Loader.GoLoad(textBox1.Text);
+            if (search.Text == "Текст")
+            {
+                search.Text = null;
+                //search.ForeColor = Color.Black;
+            }
+        }
+
+        private void search_Leave(object sender, EventArgs e)
+        {
+            if (search.Text == String.Empty)
+            {
+                search.Text = "Текст";
+                //text.ForeColor = Color.Gray;
+            }
         }
     }
 }
