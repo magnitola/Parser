@@ -38,7 +38,7 @@
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 50;
+            this.bunifuElipse1.ElipseRadius = 40;
             this.bunifuElipse1.TargetControl = this;
             // 
             // pictureBox1
@@ -52,6 +52,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // bunifuCustomTextbox1
             // 
@@ -61,11 +62,13 @@
             this.bunifuCustomTextbox1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bunifuCustomTextbox1.BorderColor = System.Drawing.Color.SeaGreen;
             this.bunifuCustomTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bunifuCustomTextbox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomTextbox1.Location = new System.Drawing.Point(8, 9);
+            this.bunifuCustomTextbox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuCustomTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(225)))), ((int)(((byte)(218)))));
+            this.bunifuCustomTextbox1.Location = new System.Drawing.Point(13, 7);
             this.bunifuCustomTextbox1.Name = "bunifuCustomTextbox1";
-            this.bunifuCustomTextbox1.Size = new System.Drawing.Size(204, 26);
+            this.bunifuCustomTextbox1.Size = new System.Drawing.Size(199, 20);
             this.bunifuCustomTextbox1.TabIndex = 1;
+            this.bunifuCustomTextbox1.Text = "What are you looking for?";
             // 
             // SearchBar
             // 

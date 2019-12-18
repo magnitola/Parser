@@ -97,6 +97,12 @@
     <Compile Include="SearchBar.Designer.cs">
       <DependentUpon>SearchBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewArticle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewArticle.Designer.cs">
+      <DependentUpon>ViewArticle.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="SearchBar.resx">
       <DependentUpon>SearchBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewArticle.resx">
+      <DependentUpon>ViewArticle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

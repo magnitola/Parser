@@ -16,5 +16,32 @@ namespace Parser
         {
             InitializeComponent();
         }
+
+        public Color Color
+        {
+            get { return bunifuCustomTextbox1.BackColor; }
+            set
+            {
+                bunifuCustomTextbox1.BackColor = value;
+                this.BackColor = value;
+            }
+        }
+
+        public string CustomText
+        {
+            get { return bunifuCustomTextbox1.Text; }
+            set
+            {
+                bunifuCustomTextbox1.Text = value;
+            }
+        }
+
+        public delegate void bools(string value);
+        public event bools GoSearch;
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            GoSearch?.Invoke(bunifuCustomTextbox1.Text);
+        }
     }
 }

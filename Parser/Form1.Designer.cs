@@ -32,13 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.search = new Bunifu.Framework.UI.BunifuTextbox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.searchBar1 = new Parser.SearchBar();
+            this.Article5 = new Parser.ViewArticle();
+            this.Article4 = new Parser.ViewArticle();
+            this.Article3 = new Parser.ViewArticle();
+            this.Article2 = new Parser.ViewArticle();
+            this.Article1 = new Parser.ViewArticle();
+            this.search = new Parser.SearchBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -49,29 +54,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.panel1.Controls.Add(this.searchBar1);
             this.panel1.Controls.Add(this.search);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(848, 50);
+            this.panel1.Size = new System.Drawing.Size(869, 50);
             this.panel1.TabIndex = 0;
-            // 
-            // search
-            // 
-            this.search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.search.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search.BackgroundImage")));
-            this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(225)))), ((int)(((byte)(218)))));
-            this.search.Icon = ((System.Drawing.Image)(resources.GetObject("search.Icon")));
-            this.search.Location = new System.Drawing.Point(216, 9);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(259, 29);
-            this.search.TabIndex = 1;
-            this.search.text = "What are you looking for?";
-            this.search.Enter += new System.EventHandler(this.bunifuTextbox1_Enter);
-            this.search.Leave += new System.EventHandler(this.search_Leave);
             // 
             // pictureBox1
             // 
@@ -89,31 +78,96 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(184, 477);
+            this.panel2.Size = new System.Drawing.Size(184, 536);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
+            this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.panel3.Controls.Add(this.Article5);
+            this.panel3.Controls.Add(this.Article4);
+            this.panel3.Controls.Add(this.Article3);
+            this.panel3.Controls.Add(this.Article2);
+            this.panel3.Controls.Add(this.Article1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(184, 50);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(664, 477);
+            this.panel3.Size = new System.Drawing.Size(685, 536);
             this.panel3.TabIndex = 2;
             // 
-            // searchBar1
+            // Article5
             // 
-            this.searchBar1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.searchBar1.Location = new System.Drawing.Point(507, 3);
-            this.searchBar1.Name = "searchBar1";
-            this.searchBar1.Size = new System.Drawing.Size(249, 45);
-            this.searchBar1.TabIndex = 2;
+            this.Article5.ArticleDate = "";
+            this.Article5.ArticleText = "";
+            this.Article5.ArticleTitle = "";
+            this.Article5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Article5.Location = new System.Drawing.Point(6, 402);
+            this.Article5.Name = "Article5";
+            this.Article5.Size = new System.Drawing.Size(655, 93);
+            this.Article5.TabIndex = 4;
+            // 
+            // Article4
+            // 
+            this.Article4.ArticleDate = "";
+            this.Article4.ArticleText = "";
+            this.Article4.ArticleTitle = "";
+            this.Article4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Article4.Location = new System.Drawing.Point(6, 303);
+            this.Article4.Name = "Article4";
+            this.Article4.Size = new System.Drawing.Size(655, 93);
+            this.Article4.TabIndex = 3;
+            // 
+            // Article3
+            // 
+            this.Article3.ArticleDate = "";
+            this.Article3.ArticleText = "";
+            this.Article3.ArticleTitle = "";
+            this.Article3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Article3.Location = new System.Drawing.Point(6, 204);
+            this.Article3.Name = "Article3";
+            this.Article3.Size = new System.Drawing.Size(655, 93);
+            this.Article3.TabIndex = 2;
+            // 
+            // Article2
+            // 
+            this.Article2.ArticleDate = "";
+            this.Article2.ArticleText = "";
+            this.Article2.ArticleTitle = "";
+            this.Article2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Article2.Location = new System.Drawing.Point(6, 105);
+            this.Article2.Name = "Article2";
+            this.Article2.Size = new System.Drawing.Size(655, 93);
+            this.Article2.TabIndex = 1;
+            // 
+            // Article1
+            // 
+            this.Article1.ArticleDate = "";
+            this.Article1.ArticleText = "";
+            this.Article1.ArticleTitle = "";
+            this.Article1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Article1.Location = new System.Drawing.Point(6, 6);
+            this.Article1.Name = "Article1";
+            this.Article1.Size = new System.Drawing.Size(655, 93);
+            this.Article1.TabIndex = 0;
+            // 
+            // search
+            // 
+            this.search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.search.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.search.CustomText = "What are you looking for?";
+            this.search.Location = new System.Drawing.Point(248, 8);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(329, 34);
+            this.search.TabIndex = 2;
+            this.search.Enter += new System.EventHandler(this.bunifuTextbox1_Enter);
+            this.search.Leave += new System.EventHandler(this.search_Leave);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 527);
+            this.ClientSize = new System.Drawing.Size(869, 586);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -122,6 +176,7 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -131,9 +186,13 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuTextbox search;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private SearchBar searchBar1;
+        private SearchBar search;
+        private ViewArticle Article5;
+        private ViewArticle Article4;
+        private ViewArticle Article3;
+        private ViewArticle Article2;
+        private ViewArticle Article1;
     }
 }
 
