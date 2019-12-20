@@ -35,6 +35,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.NumberPage = new System.Windows.Forms.Label();
             this.Article5 = new Parser.ViewArticle();
             this.Article4 = new Parser.ViewArticle();
             this.Article3 = new Parser.ViewArticle();
@@ -85,6 +88,9 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.panel3.Controls.Add(this.NumberPage);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.Article5);
             this.panel3.Controls.Add(this.Article4);
             this.panel3.Controls.Add(this.Article3);
@@ -95,6 +101,36 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(685, 536);
             this.panel3.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(362, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Вперед";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(214, 504);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Назад";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // NumberPage
+            // 
+            this.NumberPage.AutoSize = true;
+            this.NumberPage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumberPage.ForeColor = System.Drawing.Color.White;
+            this.NumberPage.Location = new System.Drawing.Point(322, 508);
+            this.NumberPage.Name = "NumberPage";
+            this.NumberPage.Size = new System.Drawing.Size(0, 17);
+            this.NumberPage.TabIndex = 7;
             // 
             // Article5
             // 
@@ -177,6 +213,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -193,6 +230,9 @@
         private ViewArticle Article3;
         private ViewArticle Article2;
         private ViewArticle Article1;
+        private System.Windows.Forms.Label NumberPage;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

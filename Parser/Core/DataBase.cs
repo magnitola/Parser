@@ -22,6 +22,10 @@ namespace Parser.Core
                 }
             }
         }
+        public IArticle GetArticle(int number)
+        {
+            return articles[number];
+        }
 
     }
 }

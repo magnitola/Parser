@@ -43,5 +43,11 @@ namespace Parser
         {
             GoSearch?.Invoke(bunifuCustomTextbox1.Text);
         }
+
+        private void bunifuCustomTextbox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                GoSearch?.Invoke(bunifuCustomTextbox1.Text);
+        }
     }
 }

@@ -14,12 +14,7 @@ namespace Parser.Core
         public event Return NewData;
         public delegate void bools(bool f1);
         public event bools OnCompleted;
-        DataBase dataBase = new DataBase();
-
-        private void Completed(bool f1)
-        {
-
-        }
+        public DataBase dataBase = new DataBase();
 
         public async void GoLoad(string request)
         {
