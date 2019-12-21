@@ -59,6 +59,17 @@ namespace Parser
             }
         }
 
+        public string CustomTag
+        {
+            set
+            {
+                label1.Tag = value;
+                pictureBox1.Tag = value;
+                panel1.Tag = value;
+                Tag = value;
+            }
+        }
+
         public delegate void Clickk(object sender, EventArgs e);
         public event Clickk ClickOnButton;
 

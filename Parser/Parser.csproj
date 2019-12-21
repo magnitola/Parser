@@ -103,6 +103,18 @@
     <Compile Include="SearchBar.Designer.cs">
       <DependentUpon>SearchBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchTablo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchTablo.Designer.cs">
+      <DependentUpon>SearchTablo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsTablo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsTablo.Designer.cs">
+      <DependentUpon>SettingsTablo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewArticle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +139,12 @@
     </Compile>
     <EmbeddedResource Include="SearchBar.resx">
       <DependentUpon>SearchBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchTablo.resx">
+      <DependentUpon>SearchTablo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsTablo.resx">
+      <DependentUpon>SettingsTablo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewArticle.resx">
       <DependentUpon>ViewArticle.cs</DependentUpon>

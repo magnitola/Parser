@@ -69,7 +69,9 @@
             this.bunifuCustomTextbox1.Size = new System.Drawing.Size(199, 20);
             this.bunifuCustomTextbox1.TabIndex = 99;
             this.bunifuCustomTextbox1.Text = "What are you looking for?";
+            this.bunifuCustomTextbox1.Enter += new System.EventHandler(this.bunifuCustomTextbox1_Enter);
             this.bunifuCustomTextbox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuCustomTextbox1_KeyDown);
+            this.bunifuCustomTextbox1.Leave += new System.EventHandler(this.bunifuCustomTextbox1_Leave);
             // 
             // SearchBar
             // 

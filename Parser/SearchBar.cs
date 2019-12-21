@@ -49,5 +49,21 @@ namespace Parser
             if (e.KeyData == Keys.Enter)
                 GoSearch?.Invoke(bunifuCustomTextbox1.Text);
         }
+
+        private void bunifuCustomTextbox1_Enter(object sender, EventArgs e)
+        {
+            if (bunifuCustomTextbox1.Text == "What are you looking for?")
+            {
+                bunifuCustomTextbox1.Text = null;
+            }
+        }
+
+        private void bunifuCustomTextbox1_Leave(object sender, EventArgs e)
+        {
+            if (bunifuCustomTextbox1.Text == String.Empty)
+            {
+                bunifuCustomTextbox1.Text = "What are you looking for?";
+            }
+        }
     }
 }
