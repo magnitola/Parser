@@ -67,7 +67,7 @@
             this.bunifuCustomTextbox1.Location = new System.Drawing.Point(13, 7);
             this.bunifuCustomTextbox1.Name = "bunifuCustomTextbox1";
             this.bunifuCustomTextbox1.Size = new System.Drawing.Size(199, 20);
-            this.bunifuCustomTextbox1.TabIndex = 1;
+            this.bunifuCustomTextbox1.TabIndex = 99;
             this.bunifuCustomTextbox1.Text = "What are you looking for?";
             this.bunifuCustomTextbox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuCustomTextbox1_KeyDown);
             // 

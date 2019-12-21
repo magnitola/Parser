@@ -19,7 +19,9 @@ namespace Parser
             InitializeComponent();
             Loader.NewData += Loader_NewData;
             Loader.OnCompleted += Loader_OnCompleted;
-            search.GoSearch += Search_GoSearch;
+            searchBar.GoSearch += Search_GoSearch;
+            menuButtonSearch.ClickOnButton += menuButtonSearch_Click;
+            menuButtonSettings.ClickOnButton += menuButtonSettings_Click;
         }
 
         private void Search_GoSearch(string value)
@@ -30,7 +32,11 @@ namespace Parser
         private void Loader_OnCompleted(bool f1)
         {
             if (f1)
-                NumberPage.Text = "1";
+            {
+                if (NumberPage.Text == String.Empty)
+                    NumberPage.Text = "1";
+                CountArticle.Text = Loader.dataBase.CountArticles().ToString();
+            }
             else
                 MessageBox.Show("Произошла ошибка в считывании!");
         }
@@ -41,6 +47,19 @@ namespace Parser
         {
             Article1.Invoke((MethodInvoker)delegate
            {
+               if (str.Link != String.Empty)
+               {
+                   if (Article1.ArticleTitle == string.Empty)
+                       BusyArticles[0] = false;
+                   if (Article2.ArticleTitle == string.Empty)
+                       BusyArticles[1] = false;
+                   if (Article3.ArticleTitle == string.Empty)
+                       BusyArticles[2] = false;
+                   if (Article4.ArticleTitle == string.Empty)
+                       BusyArticles[3] = false;
+                   if (Article5.ArticleTitle == string.Empty)
+                       BusyArticles[4] = false;
+               }
                if (!BusyArticles[0])
                {
                    SetArticle(1, str);
@@ -113,25 +132,25 @@ namespace Parser
 
         private void bunifuTextbox1_Enter(object sender, EventArgs e)
         {
-            if (search.CustomText == "What are you looking for?")
+            if (searchBar.CustomText == "What are you looking for?")
             {
-                search.CustomText = null;
+                searchBar.CustomText = null;
                 //search.ForeColor = Color.Black;
             }
         }
 
         private void search_Leave(object sender, EventArgs e)
         {
-            if (search.CustomText == String.Empty)
+            if (searchBar.CustomText == String.Empty)
             {
-                search.CustomText = "What are you looking for?";
+                searchBar.CustomText = "What are you looking for?";
                 //text.ForeColor = Color.Gray;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NumberPage.Text != String.Empty)
+            if (NumberPage.Text != String.Empty && int.Parse(NumberPage.Text) < int.Parse(CountArticle.Text) / 5)
             {
                 int number = int.Parse(NumberPage.Text);
                 NumberPage.Text = (number + 1).ToString();
@@ -163,6 +182,22 @@ namespace Parser
         private void panel1_DragEnter(object sender, DragEventArgs e)
         {
             ((Control)sender).Capture = false;
+        }
+
+        private void menuButtonSearch_Click(object sender, EventArgs e)
+        {
+            SearchPanel.Visible = true;
+            SettingsPanel.Visible = false;
+            menuButtonSearch.IsActive = true;
+            menuButtonSettings.IsActive = false;
+        }
+
+        private void menuButtonSettings_Click(object sender, EventArgs e)
+        {
+            SearchPanel.Visible = false;
+            SettingsPanel.Visible = true;
+            menuButtonSearch.IsActive = false;
+            menuButtonSettings.IsActive = true;
         }
     }
 }

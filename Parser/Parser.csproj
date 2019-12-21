@@ -37,7 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuButton.Designer.cs">
+      <DependentUpon>MenuButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\AllHtmlLoader.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Core\IArticle.cs" />
@@ -103,6 +109,9 @@
     <Compile Include="ViewArticle.Designer.cs">
       <DependentUpon>ViewArticle.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MenuButton.resx">
+      <DependentUpon>MenuButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
