@@ -24,8 +24,18 @@ namespace Parser.Core
         }
         public IArticle GetArticle(int number)
         {
-            return articles[number];
+            try
+            {
+                return articles[number];
+            }
+            catch
+            {
+                return new KatusArticle();
+            }
         }
-
+        public int CountArticles()
+        {
+            return articles.Count;
+        }
     }
 }
