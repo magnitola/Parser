@@ -26,7 +26,7 @@ namespace Parser.Core
                 await Katus.Worker();
                 OnCompleted?.Invoke(true);
             }
-            catch(Exception e)
+            catch
             {
                 OnCompleted?.Invoke(false);
             }

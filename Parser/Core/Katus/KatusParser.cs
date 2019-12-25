@@ -118,13 +118,14 @@ namespace Parser.Core
                 readStream.Close();
             }
             string s = DateTime.Now.ToString("dd.MM.yyyy");
-            string writePath = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/" + i.ToString() +".html";
-            if (!Directory.Exists(@"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/"))
-                Directory.CreateDirectory(@"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/");
+            string directory = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/";
+            string writePath = directory + i.ToString() +".html";
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
             while (File.Exists(writePath))
             {
                 i++;
-                writePath = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/" + i.ToString() + ".html";
+                writePath = directory + i.ToString() + ".html";
             }
             StreamWriter sw = new StreamWriter(writePath, true);
             try
