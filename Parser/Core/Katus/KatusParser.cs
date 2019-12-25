@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Html.Dom;
@@ -9,6 +11,19 @@ namespace Parser.Core
 {
     class KatusParser : IParser<KatusArticle>
     {
+        private int i;
+        public KatusParser()
+        {
+            string path = "history/" + DateTime.Now.ToString("dd.MM.yyyy") + "/";
+            if (Directory.Exists(path))
+            {
+                while(File.Exists(path + i.ToString() + ".html"))
+                {
+                    i++;
+                }
+            }
+            else i = 0;
+        }
         public IEnumerable<KatusArticle> Parse(IHtmlDocument document)
         {
             var t1 = Task.Run(() => GetText(document));
@@ -57,6 +72,7 @@ namespace Parser.Core
         {
             List<KatusArticle> katusArticles = new List<KatusArticle>();
             var items = document.QuerySelectorAll("dt").Where(item => item.ClassName != null && item.ClassName.Contains("result-title"));
+            string request = document.QuerySelectorAll("input").Where(item => item.Id == "search-searchword").First().Attributes["value"].Value;
             foreach (var item in items)
             {
                 KatusArticle article = new KatusArticle();
@@ -66,8 +82,61 @@ namespace Parser.Core
                 article.Link = item.QuerySelectorAll("a").First().Attributes["href"].Value;
                 //list.Add(temp + " - " + item.QuerySelectorAll("a").First().Attributes["href"].Value);
                 katusArticles.Add(article);
+                DownloadPage(article.Link, request);
             }
             return katusArticles.ToArray();
+        }
+
+        private void DownloadPage(string url, string requests)
+        {
+            KatusSettings settings = new KatusSettings();
+            url = settings.BaseUrl + url;
+            string data = " ";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            Cookie cookie = new Cookie
+            {
+                Name = "Name",
+                Value = "Value"
+            };
+            request.CookieContainer = new CookieContainer();
+            request.CookieContainer.Add(new Uri(url), cookie);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+                data = readStream.ReadToEnd();
+                response.Close();
+                readStream.Close();
+            }
+            string s = DateTime.Now.ToString("dd.MM.yyyy");
+            string writePath = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/" + i.ToString() +".html";
+            if (!Directory.Exists(@"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/"))
+                Directory.CreateDirectory(@"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/");
+            while (File.Exists(writePath))
+            {
+                i++;
+                writePath = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/" + i.ToString() + ".html";
+            }
+            StreamWriter sw = new StreamWriter(writePath, true);
+            try
+            {
+                sw.WriteLine(data);
+                i++;
+            }
+            catch
+            {
+
+            }
+            sw.Close();
         }
     }
 }
