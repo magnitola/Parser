@@ -32,14 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.searchBar = new Parser.SearchBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.SearchPanel = new Parser.SearchTablo();
+            this.SettingsPanel = new Parser.SettingsTablo();
             this.menuButtonSettings = new Parser.MenuButton();
             this.menuButtonSearch = new Parser.MenuButton();
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.SettingsPanel = new Parser.SettingsTablo();
-            this.SearchPanel = new Parser.SearchTablo();
+            this.searchBar = new Parser.SearchBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,16 +63,6 @@
             this.panel1.Size = new System.Drawing.Size(869, 50);
             this.panel1.TabIndex = 3;
             // 
-            // searchBar
-            // 
-            this.searchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.searchBar.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.searchBar.CustomText = "What are you looking for?";
-            this.searchBar.Location = new System.Drawing.Point(248, 8);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(329, 34);
-            this.searchBar.TabIndex = 2;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -85,6 +76,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.menuButtonSettings);
             this.panel2.Controls.Add(this.menuButtonSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -92,6 +84,34 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(184, 536);
             this.panel2.TabIndex = 1;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.MainPanel.Controls.Add(this.SearchPanel);
+            this.MainPanel.Controls.Add(this.SettingsPanel);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(184, 50);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(685, 536);
+            this.MainPanel.TabIndex = 2;
+            // 
+            // SearchPanel
+            // 
+            this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.SearchPanel.Location = new System.Drawing.Point(0, 1);
+            this.SearchPanel.Name = "SearchPanel";
+            this.SearchPanel.Size = new System.Drawing.Size(680, 532);
+            this.SearchPanel.TabIndex = 0;
+            // 
+            // SettingsPanel
+            // 
+            this.SettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.SettingsPanel.Location = new System.Drawing.Point(0, 4);
+            this.SettingsPanel.Name = "SettingsPanel";
+            this.SettingsPanel.Size = new System.Drawing.Size(680, 532);
+            this.SettingsPanel.TabIndex = 1;
+            this.SettingsPanel.Visible = false;
             // 
             // menuButtonSettings
             // 
@@ -119,33 +139,28 @@
             this.menuButtonSearch.Tag = "search";
             this.menuButtonSearch.ClickOnButton += new Parser.MenuButton.Clickk(this.menuButton_Click);
             // 
-            // MainPanel
+            // searchBar
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.MainPanel.Controls.Add(this.SearchPanel);
-            this.MainPanel.Controls.Add(this.SettingsPanel);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(184, 50);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(685, 536);
-            this.MainPanel.TabIndex = 2;
+            this.searchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.searchBar.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.searchBar.CustomText = "What are you looking for?";
+            this.searchBar.Location = new System.Drawing.Point(248, 8);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(329, 34);
+            this.searchBar.TabIndex = 2;
             // 
-            // SettingsPanel
+            // button1
             // 
-            this.SettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.SettingsPanel.Location = new System.Drawing.Point(0, 4);
-            this.SettingsPanel.Name = "SettingsPanel";
-            this.SettingsPanel.Size = new System.Drawing.Size(680, 532);
-            this.SettingsPanel.TabIndex = 1;
-            this.SettingsPanel.Visible = false;
-            // 
-            // SearchPanel
-            // 
-            this.SearchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.SearchPanel.Location = new System.Drawing.Point(0, 1);
-            this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(680, 532);
-            this.SearchPanel.TabIndex = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(12, 483);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 41);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Keyword Search";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -177,6 +192,7 @@
         private MenuButton menuButtonSettings;
         private SearchTablo SearchPanel;
         private SettingsTablo SettingsPanel;
+        private System.Windows.Forms.Button button1;
     }
 }
 

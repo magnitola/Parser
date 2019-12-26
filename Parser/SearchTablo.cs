@@ -31,17 +31,14 @@ namespace Parser
                 MessageBox.Show("Произошла ошибка в считывании!");
         }
         private AllHtmlLoader Loader = new AllHtmlLoader();
-        public void GoLoadOne(string value, Settings settings)
+        public void GoLoadOne(string[] value, Settings settings)
         {
             Task.Run(() => Loader.GoLoad(value, settings));
         }
 
         public void GoLoadArray(Settings settings)
         {
-            foreach(string value in settings.Tags)
-            {
-                Task.Run(() => Loader.GoLoad(value, settings));
-            }
+            Task.Run(() => Loader.GoLoad(settings.Tags, settings));
         }
         private void button2_Click(object sender, EventArgs e)
         {
