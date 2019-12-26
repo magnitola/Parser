@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Parser.Core
         HttpClient client = new HttpClient();
         private int i = 0;
 
-        public async void GoLoad(string request, Settings settings)
+        public void GoLoad(string request, Settings settings)
         {
             try
             {
@@ -44,9 +45,9 @@ namespace Parser.Core
                 foreach(var x in tasks)
                 {
                     x.Start();
+                    x.Wait();
                 }
                 Task.WaitAll(tasks.ToArray());
-                //добавить таски в массив, стартануть и ждать их завершения
                 OnCompleted?.Invoke(true);
             }
             catch
@@ -62,6 +63,7 @@ namespace Parser.Core
             Katus.OnNewData += OnNewData;
             Katus.Worker();
         }
+        private object aa = new object();
         private void GoParse(string url, string request, Settings settings)
         {
             List<string> sites = new List<string>();
@@ -74,11 +76,20 @@ namespace Parser.Core
             {
                 if (!already.Contains(sites[0]))
                 {
-                    System.Threading.Thread.Sleep(settings.Interval);
-                    List<string> arr = Worker(sites[0], request, settings).Result;
+                    try
+                    {
+                        Console.WriteLine(sites[0]);
+                        System.Threading.Thread.Sleep(settings.Interval);
+                        List<string> arr = Worker(sites[0], request, settings).Result;
+                        sites.AddRange(arr);
+                        Console.WriteLine(sites[0]);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ошибка - " + sites[0]);
+                    }
                     already.Add(sites[0]);
                     sites.RemoveAt(0);
-                    sites.AddRange(arr);
                 }
                 else
                 {
@@ -87,13 +98,14 @@ namespace Parser.Core
             }
         }
 
-        private List<string> Parse(IHtmlDocument document, string request, string url, Settings settings)
+        private async Task<List<string>> Parse(IHtmlDocument document, string request, string url, Settings settings)
         {
             //парсит документ на статьи. Должен по сути возвращать void, а отправлять статьи через эвенты
+            
             List<string> sites = new List<string>();
             var items = document.QuerySelectorAll("a").Where(item => item.Attributes["href"].Value != null && (item.Attributes["href"].Value.Contains(url) || item.Attributes["href"].Value[0] == '/'));
             string[] site = (from x in items
-                        select x.Attributes["href"].Value).ToArray();
+                                select x.Attributes["href"].Value).ToArray();
             if (url.Last() == '/')
                 url = url.Remove(url.Length - 1);
             for (int i = 0; i < site.Length; i++)
@@ -105,24 +117,25 @@ namespace Parser.Core
             if (settings.Chastich)
             {
                 string[] arr = request.Split(' ');
-                foreach(string x in arr)
+                foreach (string x in arr)
                 {
                     if (document.Source.Text.Contains(x))
                     {
                         DownloadPage(url, request);
-                        AddTitle(document, request);
+                        AddTitle(document, request, url);
                     }
                 }
             }
             else if (document.Source.Text != null && document.Source.Text.Contains(request))
             {
                 DownloadPage(url, request);
-                AddTitle(document, request);
+                AddTitle(document, request, url);
             }
             return sites;
         }
         private void DownloadPage(string url, string requests)
         {
+
             KatusSettings settings = new KatusSettings();
             //url = settings.BaseUrl + url;
             string data = " ";
@@ -174,7 +187,7 @@ namespace Parser.Core
             sw.Close();
         }
 
-        private void AddTitle(IHtmlDocument document, string request)
+        private void AddTitle(IHtmlDocument document, string request, string url)
         {
             DefaultArticle article = new DefaultArticle();
             article.Title = document.Title;
@@ -182,6 +195,7 @@ namespace Parser.Core
             //        document.Source.Text.IndexOf(request) + 15 > document.Source.Text.Length ? document.Source.Text.Length : document.Source.Text.IndexOf(request) + 15) + "...";
             article.Text = "Было найдено совпадение - " + request;//"..." + document.Source.Text.Substring(document.Source.Text.IndexOf(request) - 15, document.Source.Text.IndexOf(request) + 15) + "...";
             article.Date = DateTime.Now.ToString("dd.MM.yyyy");
+            article.Link = url;
             dataBase.AddArticles(article);
             NewData?.Invoke(article);
         }
@@ -192,7 +206,7 @@ namespace Parser.Core
 
             var document = await domParser.ParseDocumentAsync(source);
 
-            return Parse(document, request, url, settings);
+            return Parse(document, request, url, settings).Result;
         }
 
         public async Task<string> GetSource(string url)

@@ -96,7 +96,6 @@
             // menuButtonSettings
             // 
             this.menuButtonSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.menuButtonSettings.CustomTag = "settings";
             this.menuButtonSettings.CustomText = "Settings";
             this.menuButtonSettings.IsActive = false;
             this.menuButtonSettings.Location = new System.Drawing.Point(0, 223);
@@ -110,7 +109,6 @@
             // menuButtonSearch
             // 
             this.menuButtonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.menuButtonSearch.CustomTag = "search";
             this.menuButtonSearch.CustomText = "Search";
             this.menuButtonSearch.IsActive = true;
             this.menuButtonSearch.Location = new System.Drawing.Point(0, 169);
@@ -124,8 +122,8 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.MainPanel.Controls.Add(this.SettingsPanel);
             this.MainPanel.Controls.Add(this.SearchPanel);
+            this.MainPanel.Controls.Add(this.SettingsPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(184, 50);
             this.MainPanel.Name = "MainPanel";

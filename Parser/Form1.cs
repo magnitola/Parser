@@ -21,9 +21,13 @@ namespace Parser
 
         private void Search_GoSearch(string value)
         {
-            SearchPanel.GoLoad(value, SettingsPanel.settings);
+            SearchPanel.GoLoadOne(value, SettingsPanel.settings);
         }
 
+        private void GoSearchArray()
+        {
+            SearchPanel.GoLoadArray(SettingsPanel.settings);
+        }
         private void menuButton_Click(object sender, EventArgs e)
         {
             switch ((sender as Control).Tag)

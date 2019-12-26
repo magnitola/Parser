@@ -30,8 +30,8 @@
         {
             this.Title = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txt = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
+            this.txt = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,7 @@
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(658, 25);
             this.Title.TabIndex = 0;
+            this.Title.Click += new System.EventHandler(this.date_Click);
             // 
             // panel1
             // 
@@ -58,18 +59,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(664, 93);
             this.panel1.TabIndex = 1;
-            // 
-            // txt
-            // 
-            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(225)))), ((int)(((byte)(218)))));
-            this.txt.Location = new System.Drawing.Point(1, 25);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(658, 42);
-            this.txt.TabIndex = 1;
+            this.panel1.Click += new System.EventHandler(this.date_Click);
             // 
             // date
             // 
@@ -82,6 +72,20 @@
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(658, 24);
             this.date.TabIndex = 2;
+            this.date.Click += new System.EventHandler(this.date_Click);
+            // 
+            // txt
+            // 
+            this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(225)))), ((int)(((byte)(218)))));
+            this.txt.Location = new System.Drawing.Point(1, 25);
+            this.txt.Name = "txt";
+            this.txt.Size = new System.Drawing.Size(658, 42);
+            this.txt.TabIndex = 1;
+            this.txt.Click += new System.EventHandler(this.date_Click);
             // 
             // ViewArticle
             // 

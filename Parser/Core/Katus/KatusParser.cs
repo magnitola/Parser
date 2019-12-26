@@ -72,6 +72,7 @@ namespace Parser.Core
         {
             List<KatusArticle> katusArticles = new List<KatusArticle>();
             var items = document.QuerySelectorAll("dt").Where(item => item.ClassName != null && item.ClassName.Contains("result-title"));
+            KatusSettings set = new KatusSettings();
             string request = document.QuerySelectorAll("input").Where(item => item.Id == "search-searchword").First().Attributes["value"].Value;
             foreach (var item in items)
             {
@@ -79,7 +80,7 @@ namespace Parser.Core
                 string temp = item.TextContent.Replace("\n", "").Replace("\t", "").Replace("<span class=\"highlight\">", "").Replace("</span>", "");
                 temp = temp.Remove(0, temp.IndexOf('.') + 2);
                 article.Title = temp;
-                article.Link = item.QuerySelectorAll("a").First().Attributes["href"].Value;
+                article.Link = set.BaseUrl + item.QuerySelectorAll("a").First().Attributes["href"].Value;
                 //list.Add(temp + " - " + item.QuerySelectorAll("a").First().Attributes["href"].Value);
                 katusArticles.Add(article);
                 DownloadPage(article.Link, request);
@@ -89,8 +90,6 @@ namespace Parser.Core
 
         private void DownloadPage(string url, string requests)
         {
-            KatusSettings settings = new KatusSettings();
-            url = settings.BaseUrl + url;
             string data = " ";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             Cookie cookie = new Cookie

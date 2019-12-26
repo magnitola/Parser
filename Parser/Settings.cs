@@ -13,12 +13,14 @@ namespace Parser
         public string Nesting { get; set; }
         public string[] Sites { get; set; }
         public bool Chastich { get; set; }
-        public Settings(int Interval, string Nesting, string[] Sites, bool Chastich)
+        public string [] Tags { get; set; }
+        public Settings(int Interval, string Nesting, string[] Sites, bool Chastich, string[] Tags)
         {
             this.Interval = Interval;
             this.Nesting = Nesting;
             this.Sites = Sites;
             this.Chastich = Chastich;
+            this.Tags = Tags;
         }
     }
 }

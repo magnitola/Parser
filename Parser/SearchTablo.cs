@@ -31,9 +31,17 @@ namespace Parser
                 MessageBox.Show("Произошла ошибка в считывании!");
         }
         private AllHtmlLoader Loader = new AllHtmlLoader();
-        public void GoLoad(string value, Settings settings)
+        public void GoLoadOne(string value, Settings settings)
         {
             Task.Run(() => Loader.GoLoad(value, settings));
+        }
+
+        public void GoLoadArray(Settings settings)
+        {
+            foreach(string value in settings.Tags)
+            {
+                Task.Run(() => Loader.GoLoad(value, settings));
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -119,37 +127,27 @@ namespace Parser
             {
                 case 1:
                     {
-                        Article1.ArticleTitle = str.Title;
-                        Article1.ArticleText = str.Text;
-                        Article1.ArticleDate = str.Date;
+                        Article1.Article = str;
                         break;
                     }
                 case 2:
                     {
-                        Article2.ArticleTitle = str.Title;
-                        Article2.ArticleText = str.Text;
-                        Article2.ArticleDate = str.Date;
+                        Article2.Article = str;
                         break;
                     }
                 case 3:
                     {
-                        Article3.ArticleTitle = str.Title;
-                        Article3.ArticleText = str.Text;
-                        Article3.ArticleDate = str.Date;
+                        Article3.Article = str;
                         break;
                     }
                 case 4:
                     {
-                        Article4.ArticleTitle = str.Title;
-                        Article4.ArticleText = str.Text;
-                        Article4.ArticleDate = str.Date;
+                        Article4.Article = str;
                         break;
                     }
                 case 5:
                     {
-                        Article5.ArticleTitle = str.Title;
-                        Article5.ArticleText = str.Text;
-                        Article5.ArticleDate = str.Date;
+                        Article5.Article = str;
                         break;
                     }
             }

@@ -59,14 +59,20 @@ namespace Parser
             }
         }
 
-        public string CustomTag
+        private string tag = "";
+        public new string Tag
         {
+            get
+            {
+                return tag;
+            }
             set
             {
                 label1.Tag = value;
                 pictureBox1.Tag = value;
                 panel1.Tag = value;
-                Tag = value;
+                panel2.Tag = value;
+                tag = value;
             }
         }
 
@@ -75,17 +81,27 @@ namespace Parser
 
         private void MenuButton_MouseHover(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(76, 75, 105);
+            panel2.BackColor = Color.FromArgb(76, 75, 105);
         }
 
         private void MenuButton_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(50, 49, 69); 
+            panel2.BackColor = Color.FromArgb(50, 49, 69); 
         }
 
         private void MenuButton_Click(object sender, EventArgs e)
         {
             ClickOnButton?.Invoke(sender, e);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
