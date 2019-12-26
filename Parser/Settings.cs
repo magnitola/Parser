@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Parser
 {
     [Serializable]
-    class Settings
+    public class Settings
     {
         public int Interval { get; set; }
         public string Nesting { get; set; }

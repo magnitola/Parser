@@ -21,7 +21,7 @@ namespace Parser
 
         private void Search_GoSearch(string value)
         {
-            SearchPanel.GoLoad(value);
+            SearchPanel.GoLoad(value, SettingsPanel.settings);
         }
 
         private void menuButton_Click(object sender, EventArgs e)

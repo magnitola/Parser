@@ -31,9 +31,9 @@ namespace Parser
                 MessageBox.Show("Произошла ошибка в считывании!");
         }
         private AllHtmlLoader Loader = new AllHtmlLoader();
-        public void GoLoad(string value)
+        public void GoLoad(string value, Settings settings)
         {
-            Loader.GoLoad(value);
+            Task.Run(() => Loader.GoLoad(value, settings));
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -54,15 +54,15 @@ namespace Parser
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NumberPage.Text != String.Empty && int.Parse(NumberPage.Text) < int.Parse(CountArticle.Text) / 5)
+            if (NumberPage.Text != String.Empty && int.Parse(NumberPage.Text) <= int.Parse(CountArticle.Text) / 5)
             {
                 int number = int.Parse(NumberPage.Text);
                 NumberPage.Text = (number + 1).ToString();
-                SetArticle(1, Loader.dataBase.GetArticle(1 + 5 * number));
-                SetArticle(2, Loader.dataBase.GetArticle(2 + 5 * number));
-                SetArticle(3, Loader.dataBase.GetArticle(3 + 5 * number));
-                SetArticle(4, Loader.dataBase.GetArticle(4 + 5 * number));
-                SetArticle(5, Loader.dataBase.GetArticle(5 + 5 * number));
+                SetArticle(1, Loader.dataBase.GetArticle(0 + 5 * number));
+                SetArticle(2, Loader.dataBase.GetArticle(1 + 5 * number));
+                SetArticle(3, Loader.dataBase.GetArticle(2 + 5 * number));
+                SetArticle(4, Loader.dataBase.GetArticle(3 + 5 * number));
+                SetArticle(5, Loader.dataBase.GetArticle(4 + 5 * number));
             }
         }
         bool[] BusyArticles = { false, false, false, false, false };
@@ -70,6 +70,9 @@ namespace Parser
         {
             Article1.Invoke((MethodInvoker)delegate
             {
+                if (NumberPage.Text == String.Empty)
+                    NumberPage.Text = "1";
+                CountArticle.Text = (int.Parse(CountArticle.Text) + 1).ToString();
                 if (str.Link != String.Empty)
                 {
                     if (Article1.ArticleTitle == string.Empty)

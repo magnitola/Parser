@@ -48,11 +48,11 @@ namespace Parser.Core
             foreach (var item in items)
             {
                 KatusArticle article = new KatusArticle();
-                string temp = item.TextContent.Replace("\n", "").Replace("\t", "").Replace("Created on ", "").Replace(" ", "").Replace("January", "01").Replace("February", "02").Replace(
+                string temp = item.TextContent.Replace("\n", "").Replace("\t", "").Replace("Created on ", "").Replace(" ", "")/*.Replace("January", "01").Replace("February", "02").Replace(
                     "March", "03").Replace("April", "04").Replace("May", "05").Replace("June", "06").Replace("July", "07").Replace("August", "08").Replace("September", "09").Replace(
-                    "October", "10").Replace("November", "11").Replace("December", "12");
-                string st = temp[6].ToString() + temp[7].ToString() + temp[2].ToString() + temp[3].ToString() + temp[0].ToString() + temp[1].ToString();
-                katusArticles.Add(st);
+                    "October", "10").Replace("November", "11").Replace("December", "12")*/;
+                //string st = temp[6].ToString() + temp[7].ToString() + temp[2].ToString() + temp[3].ToString() + temp[0].ToString() + temp[1].ToString();
+                katusArticles.Add(temp);
             }
             return katusArticles.ToArray();
         }
@@ -119,13 +119,13 @@ namespace Parser.Core
             }
             string s = DateTime.Now.ToString("dd.MM.yyyy");
             string directory = @"history/" + s + "/" + requests.Replace("/", "-").Replace(" ", "_") + "/";
-            string writePath = directory + i.ToString() +".html";
+            string writePath = directory + "katus" + i.ToString() +".html";
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
             while (File.Exists(writePath))
             {
                 i++;
-                writePath = directory + i.ToString() + ".html";
+                writePath = directory + "katus" + i.ToString() + ".html";
             }
             StreamWriter sw = new StreamWriter(writePath, true);
             try
