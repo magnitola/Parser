@@ -13,6 +13,7 @@ namespace Parser
 {
     public partial class SearchTablo : UserControl
     {
+        public bool Searching = false;
         public SearchTablo()
         {
             InitializeComponent();
@@ -29,15 +30,21 @@ namespace Parser
             }
             else
                 MessageBox.Show("Произошла ошибка в считывании!");
+            pictureBox1.Visible = false;
+            Searching = false;
         }
         private AllHtmlLoader Loader = new AllHtmlLoader();
         public void GoLoadOne(string[] value, Settings settings)
         {
+            pictureBox1.Visible = true;
+            Searching = true;
             Task.Run(() => Loader.GoLoad(value, settings));
         }
 
         public void GoLoadArray(Settings settings)
         {
+            Searching = true;
+            pictureBox1.Visible = true;
             Task.Run(() => Loader.GoLoad(settings.Tags, settings));
         }
         private void button2_Click(object sender, EventArgs e)

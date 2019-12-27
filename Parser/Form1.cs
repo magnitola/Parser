@@ -51,5 +51,57 @@ namespace Parser
         {
             SearchPanel.GoLoadArray(SettingsPanel.settings);
         }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Capture = false;
+            Message n = Message.Create(this.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref n);
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            if (SearchPanel.Searching)
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что вы хотите выйти?\n\nНажимая на 'Да', вы подтверждаете, что вы готовы прервать копирование",
+                   "Предупреждение",
+                   MessageBoxButtons.OKCancel,
+                   MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Dispose();
+                }
+            }
+            else
+                Dispose();
+        }
+
+        private Int32 tmpX;
+        private Int32 tmpY;
+        private bool flMove = false;
+
+        private void frmMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            tmpX = Cursor.Position.X;
+            tmpY = Cursor.Position.Y;
+            flMove = true;
+        }
+
+        private void frmMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (flMove)
+            {
+                this.Left = this.Left + (Cursor.Position.X - tmpX);
+                this.Top = this.Top + (Cursor.Position.Y - tmpY);
+
+                tmpX = Cursor.Position.X;
+                tmpY = Cursor.Position.Y;
+            }
+        }
+
+        private void frmMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            flMove = false;
+        }
     }
 }
