@@ -34,6 +34,8 @@ namespace Parser
                         SettingsPanel.Visible = false;
                         menuButtonSearch.IsActive = true;
                         menuButtonSettings.IsActive = false;
+                        historyPanel.Visible = false;
+                        menuButtonHistory.IsActive = false;
                         break;
                     }
                 case "settings":
@@ -42,6 +44,18 @@ namespace Parser
                         SettingsPanel.Visible = true;
                         menuButtonSearch.IsActive = false;
                         menuButtonSettings.IsActive = true;
+                        historyPanel.Visible = false;
+                        menuButtonHistory.IsActive = false;
+                        break;
+                    }
+                case "history":
+                    {
+                        SearchPanel.Visible = false;
+                        SettingsPanel.Visible = false;
+                        menuButtonSearch.IsActive = false;
+                        menuButtonSettings.IsActive = false;
+                        historyPanel.Visible = true;
+                        menuButtonHistory.IsActive = true;
                         break;
                     }
             }

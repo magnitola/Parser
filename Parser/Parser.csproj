@@ -79,6 +79,18 @@
   <ItemGroup>
     <Compile Include="Core\DefaultArticle.cs" />
     <Compile Include="Core\DefaultParse.cs" />
+    <Compile Include="HistoryElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryElement.Designer.cs">
+      <DependentUpon>HistoryElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryTablo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryTablo.Designer.cs">
+      <DependentUpon>HistoryTablo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +139,12 @@
     <Compile Include="ViewArticle.Designer.cs">
       <DependentUpon>ViewArticle.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="HistoryElement.resx">
+      <DependentUpon>HistoryElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryTablo.resx">
+      <DependentUpon>HistoryTablo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuButton.resx">
       <DependentUpon>MenuButton.cs</DependentUpon>
     </EmbeddedResource>

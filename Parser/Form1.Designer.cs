@@ -32,21 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.SearchPanel = new Parser.SearchTablo();
             this.SettingsPanel = new Parser.SettingsTablo();
             this.menuButtonSettings = new Parser.MenuButton();
             this.menuButtonSearch = new Parser.MenuButton();
             this.searchBar = new Parser.SearchBar();
+            this.menuButtonHistory = new Parser.MenuButton();
+            this.historyPanel = new Parser.HistoryTablo();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -69,6 +71,20 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseUp);
             // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(831, 13);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 23);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 3;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -85,6 +101,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.panel2.Controls.Add(this.menuButtonHistory);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.menuButtonSettings);
             this.panel2.Controls.Add(this.menuButtonSearch);
@@ -110,6 +127,7 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.MainPanel.Controls.Add(this.historyPanel);
             this.MainPanel.Controls.Add(this.SearchPanel);
             this.MainPanel.Controls.Add(this.SettingsPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,20 +135,6 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(685, 536);
             this.MainPanel.TabIndex = 2;
-            // 
-            // bunifuImageButton1
-            // 
-            this.bunifuImageButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(831, 13);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 23);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 3;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 10;
-            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // SearchPanel
             // 
@@ -154,7 +158,7 @@
             this.menuButtonSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.menuButtonSettings.CustomText = "Settings";
             this.menuButtonSettings.IsActive = false;
-            this.menuButtonSettings.Location = new System.Drawing.Point(0, 223);
+            this.menuButtonSettings.Location = new System.Drawing.Point(0, 281);
             this.menuButtonSettings.Name = "menuButtonSettings";
             this.menuButtonSettings.Picture = ((System.Drawing.Image)(resources.GetObject("menuButtonSettings.Picture")));
             this.menuButtonSettings.Size = new System.Drawing.Size(184, 50);
@@ -185,6 +189,28 @@
             this.searchBar.Size = new System.Drawing.Size(329, 34);
             this.searchBar.TabIndex = 2;
             // 
+            // menuButtonHistory
+            // 
+            this.menuButtonHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.menuButtonHistory.CustomText = "History";
+            this.menuButtonHistory.IsActive = false;
+            this.menuButtonHistory.Location = new System.Drawing.Point(0, 225);
+            this.menuButtonHistory.Name = "menuButtonHistory";
+            this.menuButtonHistory.Picture = ((System.Drawing.Image)(resources.GetObject("menuButtonHistory.Picture")));
+            this.menuButtonHistory.Size = new System.Drawing.Size(184, 50);
+            this.menuButtonHistory.TabIndex = 3;
+            this.menuButtonHistory.Tag = "history";
+            this.menuButtonHistory.ClickOnButton += new Parser.MenuButton.Clickk(this.menuButton_Click);
+            // 
+            // historyPanel
+            // 
+            this.historyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.historyPanel.Location = new System.Drawing.Point(1, 2);
+            this.historyPanel.Name = "historyPanel";
+            this.historyPanel.Size = new System.Drawing.Size(680, 532);
+            this.historyPanel.TabIndex = 2;
+            this.historyPanel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,10 +223,10 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,6 +244,8 @@
         private SettingsTablo SettingsPanel;
         private System.Windows.Forms.Button button1;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private HistoryTablo historyPanel;
+        private MenuButton menuButtonHistory;
     }
 }
 
