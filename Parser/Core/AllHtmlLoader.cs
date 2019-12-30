@@ -23,6 +23,11 @@ namespace Parser.Core
         public DataBase dataBase = new DataBase();
         HttpClient client = new HttpClient();
 
+        /// <summary>
+        /// Точка входа для парсинга сайтов
+        /// </summary>
+        /// <param name="request">Запросы</param>
+        /// <param name="settings">Настройки</param>
         public void GoLoad(string[] request, Settings settings)
         {
             try
@@ -58,6 +63,10 @@ namespace Parser.Core
             }
         }
 
+        /// <summary>
+        /// Метод поиска по сайту Katus.eu
+        /// </summary>
+        /// <param name="req"></param>
         private void katus(string[] req)
         {
             foreach (var request in req)
@@ -68,6 +77,11 @@ namespace Parser.Core
             }
         }
 
+        /// <summary>
+        /// Обработчик получения новой статьи
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
         private void OnNewData(object arg1, IArticle arg2)
         {
             dataBase.AddArticles(arg2);

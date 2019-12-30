@@ -24,6 +24,11 @@ namespace Parser.Core
             }
             else i = 0;
         }
+        /// <summary>
+        /// Возвращает список статей
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         public IEnumerable<KatusArticle> Parse(IHtmlDocument document)
         {
             var t1 = Task.Run(() => GetText(document));
@@ -41,6 +46,11 @@ namespace Parser.Core
             }
         }
 
+        /// <summary>
+        /// Получить дату со статьи
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private string[] GetDate(IHtmlDocument document)
         {
             List<string> katusArticles = new List<string>();
@@ -56,6 +66,11 @@ namespace Parser.Core
             }
             return katusArticles.ToArray();
         }
+        /// <summary>
+        /// Получить текст со статьи
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private string[] GetText(IHtmlDocument document)
         {
             List<string> katusArticles = new List<string>();
@@ -68,6 +83,11 @@ namespace Parser.Core
             }
             return katusArticles.ToArray();
         }
+        /// <summary>
+        /// Получить Заголовок со статьи
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
         private KatusArticle[] GetTitle(IHtmlDocument document)
         {
             List<KatusArticle> katusArticles = new List<KatusArticle>();
@@ -88,6 +108,11 @@ namespace Parser.Core
             return katusArticles.ToArray();
         }
 
+        /// <summary>
+        /// Скачать страницу
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="requests"></param>
         private void DownloadPage(string url, string requests)
         {
             string data = " ";

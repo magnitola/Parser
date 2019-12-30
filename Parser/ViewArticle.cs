@@ -17,8 +17,9 @@ namespace Parser
         {
             InitializeComponent();
         }
-        public delegate void Return(object sender, EventArgs e);
-        public event Return ClickOn;
+        /// <summary>
+        /// Заголовок статьи
+        /// </summary>
         public string ArticleTitle
         {
             get { return Title.Text; }
@@ -27,7 +28,9 @@ namespace Parser
                 Title.Text = value;
             }
         }
-
+        /// <summary>
+        /// Текст статьи
+        /// </summary>
         public string ArticleText
         {
             get { return txt.Text; }
@@ -36,7 +39,9 @@ namespace Parser
                 txt.Text = value;
             }
         }
-
+        /// <summary>
+        /// Дата статьи
+        /// </summary>
         public string ArticleDate
         {
             get { return date.Text; }
@@ -47,6 +52,9 @@ namespace Parser
         }
 
         private IArticle article;
+        /// <summary>
+        /// Статья, по которой отобразятся данные на форме
+        /// </summary>
         internal IArticle Article { 
             get { return article; }
             set
@@ -57,13 +65,16 @@ namespace Parser
                 article = value;
             }
         }
-
+        /// <summary>
+        /// Нажатие на статью
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void date_Click(object sender, EventArgs e)
         {
             if (Title.Text != string.Empty)
             {
                 System.Diagnostics.Process.Start(article.Link);
-                //ClickOn?.Invoke(sender, e);
             }
         }
     }

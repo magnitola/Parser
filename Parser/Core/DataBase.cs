@@ -12,6 +12,9 @@ namespace Parser.Core
 
         public void AddArticles(IArticle article) => articles.Add(article);
 
+        /// <summary>
+        /// Получить список заголовков статьи
+        /// </summary>
         public IEnumerable<string> Titles
         {
             get
@@ -22,6 +25,11 @@ namespace Parser.Core
                 }
             }
         }
+        /// <summary>
+        /// Получить статью по индексу
+        /// </summary>
+        /// <param name="number">Индекс статьи</param>
+        /// <returns></returns>
         public IArticle GetArticle(int number)
         {
             try
@@ -33,6 +41,10 @@ namespace Parser.Core
                 return new KatusArticle();
             }
         }
+        /// <summary>
+        /// Получить кол-во статей
+        /// </summary>
+        /// <returns></returns>
         public int CountArticles()
         {
             return articles.Count;

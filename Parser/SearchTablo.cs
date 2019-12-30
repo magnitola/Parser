@@ -20,6 +20,10 @@ namespace Parser
             Loader.NewData += Loader_NewData;
             Loader.OnCompleted += Loader_OnCompleted;
         }
+        /// <summary>
+        /// Копирование завершено
+        /// </summary>
+        /// <param name="f1"></param>
         private void Loader_OnCompleted(bool f1)
         {
             if (f1)
@@ -34,19 +38,32 @@ namespace Parser
             Searching = false;
         }
         private AllHtmlLoader Loader = new AllHtmlLoader();
+        /// <summary>
+        /// Старт парсинга
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="settings"></param>
         public void GoLoadOne(string[] value, Settings settings)
         {
             pictureBox1.Visible = true;
             Searching = true;
             Task.Run(() => Loader.GoLoad(value, settings));
         }
-
+        /// <summary>
+        /// Старт парсинга
+        /// </summary>
+        /// <param name="settings"></param>
         public void GoLoadArray(Settings settings)
         {
             Searching = true;
             pictureBox1.Visible = true;
             Task.Run(() => Loader.GoLoad(settings.Tags, settings));
         }
+        /// <summary>
+        /// Нажатие на кнопку Назад
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (NumberPage.Text != String.Empty)
@@ -63,7 +80,11 @@ namespace Parser
                 }
             }
         }
-
+        /// <summary>
+        /// Нажатие на кнопку Вперед
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (NumberPage.Text != String.Empty && int.Parse(NumberPage.Text) <= int.Parse(CountArticle.Text) / 5)
@@ -78,6 +99,10 @@ namespace Parser
             }
         }
         bool[] BusyArticles = { false, false, false, false, false };
+        /// <summary>
+        /// Если была найдена новая статья
+        /// </summary>
+        /// <param name="str"></param>
         private void Loader_NewData(IArticle str)
         {
             Article1.Invoke((MethodInvoker)delegate
@@ -125,6 +150,11 @@ namespace Parser
                 }
             });
         }
+        /// <summary>
+        /// Отобразить статью
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="str"></param>
         private void SetArticle(int number, IArticle str)
         {
             switch (number)

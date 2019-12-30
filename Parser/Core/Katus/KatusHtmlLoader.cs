@@ -21,6 +21,10 @@ namespace Parser.Core
             url = $"{settings.BaseUrl}/{settings.Prefix.Replace("{request}", request)}/";
         }
 
+        /// <summary>
+        /// Получить статьи
+        /// </summary>
+        /// <returns></returns>
         public async Task Worker()
         {
             var source = await GetSource();
@@ -35,6 +39,10 @@ namespace Parser.Core
             }
         }
 
+        /// <summary>
+        /// Получить Html страницы
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> GetSource()
         {
             var response = await client.GetAsync(url);

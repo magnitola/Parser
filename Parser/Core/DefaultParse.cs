@@ -17,6 +17,12 @@ namespace Parser.Core
         internal event Return New;
 
         private int i;
+        /// <summary>
+        /// Точка входа в универсальный парсер
+        /// </summary>
+        /// <param name="url">Ссылка на сайт</param>
+        /// <param name="request">Ключевые слова</param>
+        /// <param name="settings">Настройки</param>
         public void GoParse(string url, string[] request, Settings settings)
         {
             List<string> sites = new List<string>();
@@ -30,7 +36,7 @@ namespace Parser.Core
                 {
                     try
                     {
-                        System.Threading.Thread.Sleep(settings.Interval);
+                        System.Threading.Thread.Sleep(settings.Interval * 1000);
                         List<string> arr = Worker(sites[0], request, settings).Result;
                         sites.AddRange(arr);
                         //Console.WriteLine(sites[0]);
@@ -48,6 +54,11 @@ namespace Parser.Core
                 }
             }
         }
+        /// <summary>
+        /// Возвращает кол-во обратных слешей из ссылки
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         private int Count(string url)
         {
             int counturl = 0;
@@ -58,6 +69,14 @@ namespace Parser.Core
             }
             return counturl;
         }
+        /// <summary>
+        /// Основной метод парсера
+        /// </summary>
+        /// <param name="document">Html документ страницы</param>
+        /// <param name="req">Запросы</param>
+        /// <param name="url">Ссылка на страницу</param>
+        /// <param name="settings">Настройки</param>
+        /// <returns></returns>
         private async Task<List<string>> Parse(IHtmlDocument document, string[] req, string url, Settings settings)
         {
             //парсит документ на статьи. Должен по сути возвращать void, а отправлять статьи через эвенты
@@ -101,6 +120,11 @@ namespace Parser.Core
             }
             return sites;
         }
+        /// <summary>
+        /// Скачать страницу
+        /// </summary>
+        /// <param name="url">Ссылка</param>
+        /// <param name="requests">Ключевое слово</param>
         private void DownloadPage(string url, string requests)
         {
 
@@ -155,6 +179,12 @@ namespace Parser.Core
             sw.Close();
         }
 
+        /// <summary>
+        /// Отправить найденную статью
+        /// </summary>
+        /// <param name="document">Html документ страницы</param>
+        /// <param name="request">Ключевое слово</param>
+        /// <param name="url">Ссылка на страницу</param>
         private void AddTitle(IHtmlDocument document, string request, string url)
         {
             DefaultArticle article = new DefaultArticle();
@@ -166,6 +196,13 @@ namespace Parser.Core
             article.Link = url;
             New?.Invoke(this, article);
         }
+        /// <summary>
+        /// Обработчик страницы
+        /// </summary>
+        /// <param name="url">Ссылка на страницу</param>
+        /// <param name="request">Ключевые слова</param>
+        /// <param name="settings">Настройки</param>
+        /// <returns></returns>
         public async Task<List<string>> Worker(string url, string[] request, Settings settings)
         {
             var source = await GetSource(url);
@@ -175,7 +212,11 @@ namespace Parser.Core
 
             return Parse(document, request, url, settings).Result;
         }
-
+        /// <summary>
+        /// Получить Html страницу
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<string> GetSource(string url)
         {
             HttpClient client = new HttpClient();

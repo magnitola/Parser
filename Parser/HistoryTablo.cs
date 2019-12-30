@@ -18,6 +18,11 @@ namespace Parser
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обработчик события, если поменялась дата
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bunifuDatepicker1_onValueChanged(object sender, EventArgs e)
         {
             Message.Visible = false;

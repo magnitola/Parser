@@ -33,7 +33,9 @@ namespace Parser
             toolTip1.SetToolTip(label1, "Раз в сколько секунд программа будет обращаться к сайту.\n\nЧем меньше значение, тем выше шанс, что сайт посчитает нас ботом и не отдаст нам данные");
             toolTip1.SetToolTip(label2, "Сколько уровней сайта проанализирует программа.\n\nЧем больше значение, тем больше времени займет поиск информации, но статей будет найдено больше.\n\nПоставьте значение \"all\", чтобы проанализировать все сайты полностью");
         }
-
+        /// <summary>
+        /// Загрузить настройки
+        /// </summary>
         public void LoadSettings()
         {
             BinaryFormatter binFormat = new BinaryFormatter();
@@ -50,20 +52,32 @@ namespace Parser
             listBox2.Items.Clear();
             listBox2.Items.AddRange(settings.Tags);
         }
-
+        /// <summary>
+        /// Добавить новый сайт
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (NewSite.Text != string.Empty && NewSite.Text.Contains(".") && !listBox1.Items.Contains(NewSite.Text))
                 listBox1.Items.Add(NewSite.Text);
         }
-
+        /// <summary>
+        /// Удалить сайт
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (listBox1.SelectedItem != null)
                 if (e.KeyData == Keys.Delete)
                     listBox1.Items.RemoveAt(listBox1.SelectedIndex);
         }
-
+        /// <summary>
+        /// Сохранить настройки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (Check())
@@ -83,7 +97,10 @@ namespace Parser
                 }
             }
         }
-
+        /// <summary>
+        /// Проверка на правильность введеных данных
+        /// </summary>
+        /// <returns></returns>
         private bool Check()
         {
             if (!int.TryParse(textBox1.Text, out int b))
@@ -110,6 +127,11 @@ namespace Parser
             Message.Visible = false;
             return true;
         }
+        /// <summary>
+        /// Добавить новое ключевое слово
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             if (NewTag.Text != string.Empty && !listBox2.Items.Contains(NewTag.Text))

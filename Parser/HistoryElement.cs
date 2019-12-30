@@ -19,6 +19,9 @@ namespace Parser
             InitializeComponent();
         }
         private string path;
+        /// <summary>
+        /// Ссылка на элемент в проводнике
+        /// </summary>
         public string FolderPath
         {
             get { return path; }
@@ -29,17 +32,29 @@ namespace Parser
                 path = value;
             }
         }
-
+        /// <summary>
+        /// Обработчик наведения на компонент
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel1_MouseHover(object sender, EventArgs e)
         {
             panel1.BackColor = Color.FromArgb(76, 75, 105);
         }
-
+        /// <summary>
+        /// Обработчик наведения на компонент
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
             panel1.BackColor = Color.FromArgb(44, 43, 60);
         }
-
+        /// <summary>
+        /// Обработчик нажатия на компонент
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel1_Click(object sender, EventArgs e)
         {
             if (path != null)

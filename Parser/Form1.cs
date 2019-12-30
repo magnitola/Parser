@@ -18,12 +18,20 @@ namespace Parser
             InitializeComponent();
             searchBar.GoSearch += Search_GoSearch;
         }
-
+        /// <summary>
+        /// Метод нажатия на кнопку поиска в верхней панели
+        /// </summary>
+        /// <param name="value"></param>
         private void Search_GoSearch(string value)
         {
             SearchPanel.GoLoadOne(new string[]{ value}, SettingsPanel.settings);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопки меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuButton_Click(object sender, EventArgs e)
         {
             switch ((sender as Control).Tag)
@@ -60,19 +68,21 @@ namespace Parser
                     }
             }
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку "Search Keywords"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             SearchPanel.GoLoadArray(SettingsPanel.settings);
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            this.Capture = false;
-            Message n = Message.Create(this.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            this.WndProc(ref n);
-        }
-
+        /// <summary>
+        /// Обработчик выхода из программы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             if (SearchPanel.Searching)
@@ -93,14 +103,22 @@ namespace Parser
         private Int32 tmpX;
         private Int32 tmpY;
         private bool flMove = false;
-
+        /// <summary>
+        /// Обработчик перетаскивания формы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_MouseDown(object sender, MouseEventArgs e)
         {
             tmpX = Cursor.Position.X;
             tmpY = Cursor.Position.Y;
             flMove = true;
         }
-
+        /// <summary>
+        /// Обработчик перетаскивания формы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (flMove)
@@ -112,7 +130,11 @@ namespace Parser
                 tmpY = Cursor.Position.Y;
             }
         }
-
+        /// <summary>
+        /// Обработчик перетаскивания формы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMain_MouseUp(object sender, MouseEventArgs e)
         {
             flMove = false;
