@@ -16,6 +16,7 @@ namespace Parser
         public HistoryTablo()
         {
             InitializeComponent();
+            bunifuDatepicker1_onValueChanged(new object(), new EventArgs());
         }
 
         /// <summary>
