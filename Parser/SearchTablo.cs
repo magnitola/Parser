@@ -45,9 +45,13 @@ namespace Parser
         /// <param name="settings"></param>
         public void GoLoadOne(string[] value, Settings settings)
         {
-            pictureBox1.Visible = true;
-            Searching = true;
-            Task.Run(() => Loader.GoLoad(value, settings));
+            if (!Searching)
+            {
+                ClearTablo();
+                pictureBox1.Visible = true;
+                Searching = true;
+                Task.Run(() => Loader.GoLoad(value, settings));
+            }
         }
         /// <summary>
         /// Старт парсинга
@@ -55,9 +59,27 @@ namespace Parser
         /// <param name="settings"></param>
         public void GoLoadArray(Settings settings)
         {
-            Searching = true;
-            pictureBox1.Visible = true;
-            Task.Run(() => Loader.GoLoad(settings.Tags, settings));
+            if (!Searching)
+            {
+                ClearTablo();
+                Searching = true;
+                pictureBox1.Visible = true;
+                Task.Run(() => Loader.GoLoad(settings.Tags, settings));
+            }
+        }
+        /// <summary>
+        /// Полностью очищает табло
+        /// </summary>
+        public void ClearTablo()
+        {
+            Article1.Article = new DefaultArticle();
+            Article2.Article = new DefaultArticle();
+            Article3.Article = new DefaultArticle();
+            Article4.Article = new DefaultArticle();
+            Article5.Article = new DefaultArticle();
+            NumberPage.Text = "";
+            CountArticle.Text = "0";
+            Loader.dataBase.Clear();
         }
         /// <summary>
         /// Нажатие на кнопку Назад

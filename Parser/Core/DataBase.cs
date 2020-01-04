@@ -49,5 +49,10 @@ namespace Parser.Core
         {
             return articles.Count;
         }
+
+        public void Clear()
+        {
+            articles.Clear();
+        }
     }
 }
